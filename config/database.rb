@@ -34,7 +34,7 @@ DataMapper.logger = logger
 DataMapper::Property::String.length(255)
 
 case Padrino.env
-  when :development then DataMapper.setup(:default, "sqlite3://" + Padrino.root('db', "fabfourjukebox_development.db"))
-  when :production  then DataMapper.setup(:default, "sqlite3://" + Padrino.root('db', "fabfourjukebox_production.db"))
-  when :test        then DataMapper.setup(:default, "sqlite3://" + Padrino.root('db', "fabfourjukebox_test.db"))
+  when :development then DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://" + Padrino.root('db', "fabfourjukebox_development.db"))
+  when :production  then DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://" + Padrino.root('db', "fabfourjukebox_production.db"))
+  when :test        then DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://" + Padrino.root('db', "fabfourjukebox_test.db"))
 end

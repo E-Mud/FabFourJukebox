@@ -16,14 +16,7 @@ gem 'rake'
 # Component requirements
 gem 'bcrypt'
 gem 'slim'
-gem 'dm-sqlite-adapter'
-gem 'dm-validations'
-gem 'dm-timestamps'
-gem 'dm-migrations'
-gem 'dm-constraints'
-gem 'dm-aggregates'
-gem 'dm-types'
-gem 'dm-core'
+gem 'data_mapper'
 
 # Test requirements
 gem 'mocha', :group => 'test', :require => false
@@ -41,9 +34,11 @@ gem 'padrino', '0.12.2'
 #   gem 'padrino-' + g, '0.12.2'
 # end
 
-group :production do
- gem 'pg'
-end
+gem 'dm-sqlite-adapter', :group => 'test'
+gem 'dm-sqlite-adapter', :group => 'development'
+
+gem 'pg', :group => 'production'
+gem 'dm-postgres-adapter', :group => 'production'
 
 gem 'rabl'
 gem 'oj'
