@@ -63,6 +63,9 @@ module Fabfourjukebox
     #   end
     #
 	
+    get '/' do
+        "hello heroku"
+    end
 	
 	
 	
