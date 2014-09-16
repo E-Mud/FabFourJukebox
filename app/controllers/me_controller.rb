@@ -14,7 +14,7 @@ Fabfourjukebox::App.controllers :me do
 
 	get :play do
 		if @requester.last_song_at == Date.today
-			@song = Listened.find(:user => @requester, :listened_on => Date.today).song
+			@song = Listened.first(:user => @requester, :listened_on => Date.today).song
 		else
 			listened_songs_ids = Listened.all(:user => @requester).map {|ltd| ltd.song.id}
 			@requester.update(:last_song_at => Date.today)
@@ -33,5 +33,11 @@ Fabfourjukebox::App.controllers :me do
 		@song = SongPresenter.new(@song, true)
 		status 200
 		render 'song/song_full'
+	end
+
+	get :listened do
+		@songs = Listened.all(:user => @requester).map {|ltd| ListenedPresenter.new(ltd)}
+		status 200
+		render 'song/list_listened'
 	end
 end

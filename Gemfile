@@ -41,6 +41,10 @@ gem 'padrino', '0.12.2'
 #   gem 'padrino-' + g, '0.12.2'
 # end
 
+group :production do
+ gem 'pg'
+end
+
 gem 'rabl'
 gem 'oj'
 gem 'json'

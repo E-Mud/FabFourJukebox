@@ -28,6 +28,14 @@ describe "MeController" do
 		JSON.parse(last_response.body)
 	end
 
+	def get_listened_songs
+		get '/me/listened', {}, 'HTTP_AUTHORIZATION' => basic_auth(@user.email, @user.password)
+
+		expect(last_response.status).to eq(200)
+
+		JSON.parse(last_response.body)
+	end
+
 	it "should forbid a wrong user" do
 		get '/me/play', {}, 'HTTP_AUTHORIZATION' => basic_auth("wrong_email@gmail.com", "123456")
 
@@ -70,5 +78,15 @@ describe "MeController" do
 		listened_after = Listened.all(:user => @user).size
 
 		expect(listened_after).to eq(listened_before+1)
+	end
+
+	it "should return listened songs" do
+		Listened.create(:user => @user, :song => @songs[1], :listened_on => Date.today-3)
+		Listened.create(:user => @user, :song => @songs[0], :listened_on => Date.today-2)
+
+		songs = get_listened_songs
+
+		p songs
+		expect(songs.size).to eq(2)
 	end
 end 
