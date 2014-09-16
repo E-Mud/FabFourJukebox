@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Fab Four Jukebox</title>
+
+    <script src="javascripts/cookies.js"></script>
+    <!--script>
+      var sesid = getCookie('sesid')
+      if(sesid == null || sesid == ''){
+        window.location.replace("./index.html")
+      }
+    </script-->
+    <!-- Bootstrap core CSS -->
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+    <link href="stylesheets/wt.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Fab Four Jukebox</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav nav-tabs navbar-nav" role="tablist">
+            <li><a href="#play" role="tab" data-toggle="tab">Hoy</a></li>
+            <li><a href="#listened" role="tab" data-toggle="tab">Escuchadas</a></li>
+            <li class="active"><a href="#allsongs" role="tab" data-toggle="tab">Todas</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a id="logout">Salir</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container tab-content">
+    	<div class="row tab-pane row-centered" id="play">
+    		<div class="col-md-4 col-centered" id="play-song"></div>
+    	</div>
+
+    	<div class="row tab-pane active" id="allsongs">
+	        <div class="col-md-3">
+	          <h4>Albums:</h4>
+	          <div id="albums-list" class="list-group">
+	          </div>
+	        </div>
+	       <div class="col-md-4">
+	        <h4>Canciones:</h4>
+	          <ul id="album-songs" class="list-group"></ul>
+	       </div>
+      	</div>
+
+	    <div class="tab-pane" id="listened">
+	        <div class="col-md-4">
+	        	<ul id="listened-list" class="list-group"></ul>
+	      	</div>
+		</div>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--script src="../../assets/js/ie10-viewport-bug-workaround.js"></script-->
+
+    <script src="javascripts/queries.js"></script>
+    <script src="javascripts/logInOut.js"></script>
+
+    <script src="javascripts/wtindex.js"></script>
+  </body>
+</html>

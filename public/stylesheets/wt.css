@@ -1,0 +1,27 @@
+body {
+	padding-top : 70px;
+	padding-bottom : 30px;
+	background : #eeeeee;
+}
+
+p.inline{
+	display : inline;
+}
+
+p.result-value{
+    position: absolute;
+    right: 0;
+    padding-right: 10px;
+}
+
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
