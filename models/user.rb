@@ -8,7 +8,7 @@ class User
 	property :email,			String
 	property :crypted_password,	String
 	property :created_on, 		Date
-	property :last_song_at, 	Date
+	property :last_song_at, 	Date, :default => lambda { |r,p| Date.today - 1 }
 	
 	has n, :songs, :through => :user_songs
 	has n, :albums, :through => :user_albums

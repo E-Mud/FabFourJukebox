@@ -33,7 +33,7 @@ describe "UserController" do
 	end
 	
 	it "should forbid wrong user" do
-		get user_uri(user_id), {}, 'HTTP_AUTHORIZATION' => "Basic " + Base64.encode64("wrong_email@gmail.com" + ":" + "123456")
+		get user_uri(@users[0].id), {}, 'HTTP_AUTHORIZATION' => "Basic " + Base64.encode64("wrong_email@gmail.com" + ":" + "123456")
 		expect(last_response.status).to eq(401)
 	end
 		
