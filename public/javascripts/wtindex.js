@@ -1,21 +1,21 @@
 function showTodaysSong(){
-	var playSong = $("#play-song")
+	var playSong = $("#play-song").empty()
 
 	playNewSong(function(song){
 		playSong.append("<h1>Hoy deberias escuchar</h1>")
-		playSong.append("<h2>" + song.name + "</h2>")
-		playSong.append("<h2>De: " + song.album.name + "</h2>")
+		playSong.append("<h2>" + song.name + " (" + song.album.name + ")</h2>")
 	})
+	populateListenedList()
 }
 
 function populateActiveAlbumSongsList(){
-	var activeAlbumHref = parseInt($(".album-list-item.active").attr("id"));
+	var activeAlbumHref = $(".album-list-item.active").attr("id");
 	var songsList = $("#album-songs").empty();
 
 	queryAlbumSongs(activeAlbumHref, function(data){
 		$.each(data, function(index, song) {
 			songsList.append("<li class=\"list-group-item\">"+
-				"<p class=\"inline\">"+song.name+":</p></li>");
+				"<p class=\"inline\">"+song.name+"</p></li>");
 		});
 		songsList.offset({top : $('.album-list-item.active').offset().top})
 	});
@@ -49,8 +49,8 @@ function populateListenedList(){
 
 	queryListenedSongs(function(songs){
 		$.each(songs, function(index, song) {
-			listenedList.append("<li class=\"list-group-item\"><p class=\"inline\">"+song.name+"</p>"+
-				"<p  class=\"inline\">Escuchado: "+song.listened_on+"</p></li>");
+			listenedList.append("<li class=\"list-group-item\"><p>"+song.name+"</p>"+
+				"<p>Escuchado: "+song.listened_on+"</p></li>");
 		});
 	})
 }
@@ -78,7 +78,8 @@ function wtindexmain(){
 	// 	populateActiveResultList();
 	// });
 
-	$('a[href="play"').click(function (e) {
+	$('#play-tab').click(function (e) {
+		alert("BUENASS")
 		showTodaysSong()
 	})
 
