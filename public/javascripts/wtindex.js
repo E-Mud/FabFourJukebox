@@ -2,7 +2,7 @@ function showTodaysSong(){
 	var playSong = $("#play-song").empty()
 
 	playNewSong(function(song){
-		playSong.append("<h1>Hoy deberias escuchar</h1>")
+		playSong.append("<h1>Listen to:</h1>")
 		playSong.append("<h2>" + song.name + " (" + song.album.name + ")</h2>")
 	})
 	populateListenedList()
@@ -39,7 +39,7 @@ function populateAlbumsList(){
 			})
 			populateActiveAlbumSongsList();
 		}else{
-			albumsList.append("<p>No hay albums</p>");
+			albumsList.append("<p>No albums</p>");
 		}
 	});
 }
@@ -50,7 +50,7 @@ function populateListenedList(){
 	queryListenedSongs(function(songs){
 		$.each(songs, function(index, song) {
 			listenedList.append("<li class=\"list-group-item\"><p>"+song.name+"</p>"+
-				"<p>Escuchado: "+song.listened_on+"</p></li>");
+				"<p>Listened on: "+song.listened_on+"</p></li>");
 		});
 	})
 }
@@ -79,10 +79,6 @@ function wtindexmain(){
 	// });
 
 	$('#play-tab').click(function (e) {
-<<<<<<< HEAD
-=======
-		alert("BUENASS")
->>>>>>> 48e228febb4682eadf6eb7ea40527996b05e3441
 		showTodaysSong()
 	})
 
