@@ -11,12 +11,12 @@
     <title>Fab Four Jukebox</title>
 
     <script src="javascripts/cookies.js"></script>
-    <!--script>
+    <script>
       var sesid = getCookie('sesid')
       if(sesid == null || sesid == ''){
         window.location.replace("./index.html")
       }
-    </script-->
+    </script>
     <!-- Bootstrap core CSS -->
     <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
 
@@ -40,7 +40,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav nav-tabs navbar-nav" role="tablist">
-            <li><a href="#play" role="tab" data-toggle="tab">Hoy</a></li>
+            <li><a href="#play" role="tab" data-toggle="tab" id="play-tab">Hoy</a></li>
             <li><a href="#listened" role="tab" data-toggle="tab">Escuchadas</a></li>
             <li class="active"><a href="#allsongs" role="tab" data-toggle="tab">Todas</a></li>
           </ul>
@@ -52,8 +52,8 @@
     </div>
 
     <div class="container tab-content">
-    	<div class="row tab-pane row-centered" id="play">
-    		<div class="col-md-4 col-centered" id="play-song"></div>
+    	<div class="tab-pane" id="play">
+    		<div class="jumbotron" id="play-song"></div>
     	</div>
 
     	<div class="row tab-pane active" id="allsongs">

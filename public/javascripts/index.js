@@ -11,7 +11,7 @@ function indexmain(){
 		var username = $('#email').val();
 		var password = $('#passwd').val();
 		logIn(username, password, onLoggedIn, function(){
-			alert("WRONG");
+			//alert("NO");
 		})
 	})
 }
