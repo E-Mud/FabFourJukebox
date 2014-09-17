@@ -1,8 +1,8 @@
 var QUERYSERVER = "fabfourjukebox.herokuapp.com"
 
-var PLAYURL = QUERYSERVER + "/me/play"
-var LISTENEDURL = QUERYSERVER + "/me/listened"
-var ALBUMSURL = QUERYSERVER + "/albums"
+var PLAYURL = "/me/play"
+var LISTENEDURL = "/me/listened"
+var ALBUMSURL = "/albums"
 
 function queryAlbums(succesFunction){
     var asyncCall = !(typeof(succesFunction) === 'undefined')
@@ -15,7 +15,8 @@ function queryAlbums(succesFunction){
         url: url,
         dataType: "json",
         success: function(data){
-            alert(typeof(data))
+            albums = data
+
             if(asyncCall){
                 succesFunction(albums)
             }
@@ -37,11 +38,9 @@ function playNewSong(succesFunction){
         async: asyncCall,
         url: url,
         dataType: "json",
-        headers: { "Authorization": getAuthHeader()  }
+        headers: { "Authorization": getAuthHeader()  },
         success: function(data){
-            alert(typeof(data))
-            
-
+            song = data
             if(asyncCall){
                 succesFunction(song)
             }
@@ -54,6 +53,30 @@ function playNewSong(succesFunction){
 	
 }
 
+function queryAlbumSongs(albumHref, succesFunction){
+    var asyncCall = !(typeof(succesFunction) === 'undefined')
+
+    var songs = []
+    $.ajax({
+        type: "GET",
+        async: asyncCall,
+        url: albumHref,
+        dataType: "json",
+        headers: { "Authorization": getAuthHeader()  },
+        success: function(data){
+            songs = data.songs
+            
+            if(asyncCall){
+                succesFunction(songs)
+            }
+        }
+    });
+
+    if(!asyncCall){
+        return songs;
+    }    
+}
+
 function queryListenedSongs(succesFunction){
 	var asyncCall = !(typeof(succesFunction) === 'undefined')
 
@@ -64,9 +87,9 @@ function queryListenedSongs(succesFunction){
         async: asyncCall,
         url: url,
         dataType: "json",
-        headers: { "Authorization": getAuthHeader()  }
+        headers: { "Authorization": getAuthHeader()  },
         success: function(data){
-            alert(typeof(data))
+            songs = data
 
             if(asyncCall){
                 succesFunction(songs)
