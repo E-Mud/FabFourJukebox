@@ -79,6 +79,10 @@ function wtindexmain(){
 	// });
 
 	$('#play-tab').click(function (e) {
+<<<<<<< HEAD
+=======
+		alert("BUENASS")
+>>>>>>> 48e228febb4682eadf6eb7ea40527996b05e3441
 		showTodaysSong()
 	})
 
